@@ -28,7 +28,7 @@ def test_it_runs_my_test(session):
 
 ```
 
-if you don't want to or, for some reason, can't rely on the requests_flask_adapter.Session, you can also use the requests_flask_adapter helper function to monkey patch the requests Session. For now, it heavily depends on import order, so make sure to patch it before importing the Session for your tests.
+if you don't want to or, for some reason, can't rely on the `requests_flask_adapter.Session`, you can also use the requests_flask_adapter helper function to monkey patch the requests Session. For now, it heavily depends on import order, so make sure to patch it before importing the Session for your tests.
 
 ```python
 from requests_flask_adapter.helpers import patch_requests
