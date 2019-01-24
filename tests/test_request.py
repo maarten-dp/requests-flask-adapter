@@ -1,6 +1,5 @@
 import json
 from io import StringIO
-import time
 
 from pytest import fixture
 from flask import Flask, request, Response
