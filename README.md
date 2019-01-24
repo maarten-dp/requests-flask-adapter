@@ -2,7 +2,7 @@
 
 FlaskAdapter is a requests adapter intended to allow its user to call Flask app endpoints, with requests, without having to run a Flask server.
 
-Its main uses include building integration tests and client tests without having to resort to multithreading/multiprocessing to spawn a running Flask app. In doing so, you are able to to call the endpoints you wish to test. It can also be used as an alternative to the Flask test_client, unlocking the well-known and well-loved interface of requests in your unittests, because god knows I love those `json.loads(res.data.decode('utf-8'))` statements in my tests.
+Its main uses include building integration tests and client tests without having to resort to multithreading/multiprocessing to spawn a running Flask app. In doing so, you are able to to call the endpoints you wish to test with your client. It can also be used as an alternative to the Flask test_client, unlocking the well-known and well-loved interface of requests in your unittests, because god knows I love those `json.loads(res.data.decode('utf-8'))` statements in my tests.
 
 ### Using FlaskAdapter as a test client
 
@@ -28,7 +28,7 @@ def test_it_runs_my_test(session):
 
 ```
 
-if you don't want to or, for some reasone, can't rely on the requests_flask_adapter.Session, you can also use the requests_flask_adapter helper function to monkey patch the requests Session. For now, it heavily depends on import order, so make sure to patch it before importing the Session for your tests.
+if you don't want to or, for some reason, can't rely on the requests_flask_adapter.Session, you can also use the requests_flask_adapter helper function to monkey patch the requests Session. For now, it heavily depends on import order, so make sure to patch it before importing the Session for your tests.
 
 ```python
 from requests_flask_adapter.helpers import patch_requests
