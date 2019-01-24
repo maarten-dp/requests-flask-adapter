@@ -96,7 +96,7 @@ Let's assume the your team owns and maintains the following codebases:
  - An ETL script that periodically runs and collects realtime stats from your webshop.
  - A timeseries database that stores the data extracted by your ETL script
 
-Using the data stored in your timeseries database, you have a reporting script that your run once per month to determine peak hours, what product is most popular during which hours, which amount of users showed intrest in which products, which products are falling in and out of trending, etc.
+Using the data stored in your timeseries database, you have a reporting script that you run once per month to determine peak hours, what product is most popular and during which hours, which amount of users showed intrest in which products, which products are falling in and out of trending, etc.
 
 Seeing as these codebases are still actively under constructions, you want to make sure future implementations don't introduce regressions in the entire chain.
 
