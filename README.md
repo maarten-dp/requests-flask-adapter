@@ -70,6 +70,7 @@ def client():
         auth=('Scanlan', 'b3st_b4rd_Exandr!a'),
     )
 
+
 def test_it_gets_a_user_list(client):
     users = client.users()
     assert users == ['vex', 'vax']
