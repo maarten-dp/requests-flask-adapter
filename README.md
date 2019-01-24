@@ -147,7 +147,7 @@ def test_it_can_go_end_to_end(feeder_client, writer)
         writer=writer,
     )
     worker.run()
-    result =  Series.sum('my_serie_name').from(now).to(now + timedelta(days=1))
+    result =  Series.sum('my_serie_name', start=now, end=now + timedelta(days=1))
     assert result == 42
 
 ```
