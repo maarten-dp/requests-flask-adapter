@@ -60,7 +60,7 @@ def test_it_makes_a_get_request_with_query_params(session):
     assert res.json()['args'] == AN_EXPECTED_DICT
 
 
-def test_it_makes_as_simple_post_request(session):
+def test_it_makes_a_simple_post_request(session):
     res = session.post('http://app/echo', data=A_DICT)
     assert res.json()['form'] == AN_EXPECTED_DICT
 
