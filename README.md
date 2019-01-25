@@ -96,9 +96,9 @@ Let's assume the your team owns and maintains the following codebases:
  - An ETL script that periodically runs and collects realtime stats from your webshop.
  - A timeseries database that stores the data extracted by your ETL script
 
-Using the data stored in your timeseries database, you have a reporting script that you run once per month to determine peak hours, what product is most popular and during which hours, which amount of users showed intrest in which products, which products are falling in and out of trending, etc.
+Using the data stored in your timeseries database, you have a reporting script that you run once per month to determine peak hours, what product is most popular and during which hours, which amount of users showed interest in which products, which products are falling in and out of trending, etc.
 
-Seeing as these codebases are still actively under constructions, you want to make sure future implementations don't introduce regressions in the entire chain.
+Seeing as these codebases are still actively under construction, you want to make sure future implementations don't introduce regressions in the entire chain.
 
 ```python
 from datetime import datetime, timedelta
@@ -147,7 +147,7 @@ def test_it_can_go_end_to_end(feeder_client, writer)
         writer=writer,
     )
     worker.run()
-    result =  Series.sum('my_serie_name', start=now, end=now + timedelta(days=1))
+    result = Series.sum('my_serie_name', start=now, end=now + timedelta(days=1))
     assert result == 42
 
 ```
