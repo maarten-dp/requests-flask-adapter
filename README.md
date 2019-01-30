@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/maarten-dp/requests-flask-adapter.svg?branch=master)](https://travis-ci.com/maarten-dp/requests-flask-adapter)
+
 ### Purpose
 
 FlaskAdapter is a requests adapter intended to allow its user to call Flask app endpoints, with requests, without having to run a Flask server.
