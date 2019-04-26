@@ -75,7 +75,6 @@ def test_it_sends_headers(session):
     assert res.json()['headers'] == {
         'User-Agent': 'python-requests/{}'.format(requests.__version__),
         'Host': 'localhost',
-        'Content-Length': '0',
         'Accept-Encoding': 'gzip, deflate',
         'Accept': '*/*',
         'Connection': 'keep-alive', 
