@@ -23,9 +23,14 @@ jobs:
     install: skip
     deploy:
       provider: pypi
+      distributions: sdist bdist_wheel
       user: maartendp
-      password: $PYPI_PASS
+      password:
+        secure: jxiCBAoldGuO80prA/amDg0Cy5s0sO0AKN9Z+98LtEbqwsfiWe8zjaniplPkJ7smJ5NxoYiHP/TLtHroxY/Hjkcw8ESYrWXMf0uRmORIACKvNFcQDsv1dOewgLUts5ECjihJKAxuSaoYbZFciBvfEjyX2kZQX3OfaZ8IxhtWxjrmubOJs7T11cxkLgoF8LHNDAk+C546rbburdhP/lbo8youlQ4qKN2HPqh92LN3W6+lzolQ8NQTIluidg4v0OpqKCidbq/BNFxeeo/pt/VsYf4vt7ugbdRuhTKYJCiI0FZuHGYrP9FIam1lD3FtLibNQKDCH31AVpy7I4WtXJGPqFhtAYWWPpON7MqeJBM4hAvBhwmPblNuVJ6P7/1PdBb9UGEFLHOM2GgdIIE4xmurPp2LiKy1DRn8nyQ5YOstmLDb7gMh6iIL/49TFWlwzRcRhtx4d/o5IvUrDk4WgbL612s9YH852MuZFroqSCwQDc46f2HjQrmeBfOrpJ6cpSlvTCJdhAPFnitQ8dvKOkGET6fzlhz5EDYjYgxRMEf/hXrJPVmIpQDOr7NTqVtpJnUC10Xs8RuTJ4iI4VyX6h4BToizNQUTdeZJtDILJXGer/o1R/EYdS8PjZWoaq9gIcYPKOsLD+BsBMmyZ82lG7GJW4kzL95OCL9WLZlWv6VeoTc=
       on:
         tags: true
+        repo: maarten-dp/requests-flask-adapter
+  deploy:
+    password:
 script:
 - tox
