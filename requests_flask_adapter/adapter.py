@@ -50,9 +50,14 @@ class FlaskAdapter(BaseAdapter):
     def build_response(self, request, rv):
         content, status, headers = rv
         if content:
-            content = BytesIO(content[0])
+            fh = BytesIO(content[0])
+            for chunk in content:
+                fh.write(chunk)
+            fh.seek(0)
+            content = fh
         else:
             content = BytesIO()
+
         code, reason = status.split(None, 1)
         resp = HTTPResponse(
             body=content,
