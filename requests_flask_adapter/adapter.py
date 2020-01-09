@@ -37,7 +37,7 @@ class FlaskAdapter(BaseAdapter):
             'data': request.body,
             'headers': request.headers.items()
         }
-        builder = EnvironBuilder(self.app, request.path_url, **kw)
+        builder = EnvironBuilder(app=self.app, path=request.path_url, **kw)
 
         try:
             environ = builder.get_environ()
