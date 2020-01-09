@@ -2,7 +2,7 @@ from io import BytesIO
 
 from urllib3.response import HTTPResponse
 from requests.adapters import BaseAdapter, HTTPAdapter
-from flask.testing import make_test_environ_builder
+from flask.testing import EnvironBuilder
 from werkzeug.test import run_wsgi_app
 
 
@@ -37,7 +37,7 @@ class FlaskAdapter(BaseAdapter):
             'data': request.body,
             'headers': request.headers.items()
         }
-        builder = make_test_environ_builder(self.app, request.path_url, **kw)
+        builder = EnvironBuilder(self.app, request.path_url, **kw)
 
         try:
             environ = builder.get_environ()
