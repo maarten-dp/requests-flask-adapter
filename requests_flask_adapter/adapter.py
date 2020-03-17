@@ -23,12 +23,13 @@ class MockResponse:
 
 
 class FlaskAdapter(BaseAdapter):
-    def __init__(self, app):
+    def __init__(self, app, base_url=None):
         self.app = app
         self.environ_base = {
             'REMOTE_ADDR': "127.0.0.1",
             'HTTP_USER_AGENT': 'RequestsFlask/0.0.1'
         }
+        self.base_url = base_url
 
     def send(self, request, **kwargs):
         kw = {
@@ -38,6 +39,8 @@ class FlaskAdapter(BaseAdapter):
             'headers': request.headers.items()
         }
         builder = EnvironBuilder(app=self.app, path=request.path_url, **kw)
+        if self.base_url:
+            builder.base_url = self.base_url
 
         try:
             environ = builder.get_environ()

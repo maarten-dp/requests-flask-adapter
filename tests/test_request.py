@@ -38,9 +38,13 @@ def app():
             'auth': request.authorization,
         }))
 
+        if path == 'location':
+            resp.headers['Location'] = '/location'
+
         resp.set_cookie(
             'view_count', str(int(request.cookies.get('view_count', 0)) + 1))
         return resp
+
     return app
 
 
@@ -77,7 +81,7 @@ def test_it_sends_headers(session):
         'Host': 'localhost',
         'Accept-Encoding': 'gzip, deflate',
         'Accept': '*/*',
-        'Connection': 'keep-alive', 
+        'Connection': 'keep-alive',
         'X-Someheader': 'header'
     }
 
@@ -106,3 +110,12 @@ def test_it_can_patch_requests(app):
     from requests import Session
     res = Session().get('http://patched_app/echo')
     assert res.json()['path'] == 'echo'
+
+
+def test_it_forwards_base_url(app):
+    base_url = 'https://awesome-app'
+    Session.register('https://awesome-app', app)
+    session = Session(base_url=base_url)
+
+    res = session.get('https://awesome-app/location', headers={'Location': '/hello_world'})
+    assert res.headers['Location'] == 'https://awesome-app/location'
