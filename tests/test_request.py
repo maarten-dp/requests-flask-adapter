@@ -112,10 +112,19 @@ def test_it_can_patch_requests(app):
     assert res.json()['path'] == 'echo'
 
 
+def test_it_can_patch_requests_with_base_url(app):
+    from requests_flask_adapter.helpers import patch_requests
+    base_url = 'http://patched_app'
+    patch_requests([(base_url, app, base_url)])
+    from requests import Session
+    res = Session().get('http://patched_app/location')
+    assert res.headers['Location'] == '{}/location'.format(base_url)
+
+
 def test_it_forwards_base_url(app):
     base_url = 'https://awesome-app'
-    Session.register('https://awesome-app', app)
-    session = Session(base_url=base_url)
+    Session.register('https://awesome-app', app, base_url)
+    session = Session()
 
     res = session.get('https://awesome-app/location', headers={'Location': '/hello_world'})
     assert res.headers['Location'] == 'https://awesome-app/location'
