@@ -26,17 +26,17 @@ class FlaskAdapter(BaseAdapter):
     def __init__(self, app, base_url=None):
         self.app = app
         self.environ_base = {
-            'REMOTE_ADDR': "127.0.0.1",
-            'HTTP_USER_AGENT': 'RequestsFlask/0.0.1'
+            "REMOTE_ADDR": "127.0.0.1",
+            "HTTP_USER_AGENT": "RequestsFlask/0.0.1",
         }
         self.base_url = base_url
 
     def send(self, request, **kwargs):
         kw = {
-            'environ_base': self.environ_base,
-            'method': request.method,
-            'data': request.body,
-            'headers': request.headers.items()
+            "environ_base": self.environ_base,
+            "method": request.method,
+            "data": request.body,
+            "headers": request.headers.items(),
         }
         builder = EnvironBuilder(app=self.app, path=request.path_url, **kw)
         if self.base_url:
@@ -69,7 +69,7 @@ class FlaskAdapter(BaseAdapter):
             version=10,
             reason=reason,
             preload_content=False,
-            original_response=MockResponse(headers)
+            original_response=MockResponse(headers),
         )
 
         return HTTPAdapter.build_response(self, request, resp)
